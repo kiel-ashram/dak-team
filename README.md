@@ -1,6 +1,6 @@
 ## DAK
 
-the DAK project is a first time project from 3 developers- Diego, Angela, and Kiel.
+the DAK project is a first time project from 4 developers- Diego, Angela, Kiel and Shahab.
 
 USER STORIES
 
