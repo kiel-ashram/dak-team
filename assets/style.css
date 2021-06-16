@@ -1,0 +1,21 @@
+ul {
+  list-style: none;
+}
+
+.all-list-container {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  background-color: lightgray;
+}
+
+.list-scroller {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: white;
+  width: 200px;
+  height: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
