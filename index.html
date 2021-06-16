@@ -4,16 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/style.css"
+      media="screen"
+    />
     <title>Plot that PokeMon!</title>
   </head>
   <body>
     <header>
-      <h1>Plot that PokeMon!</h1>
+      <h1>Plot a Poke-point!</h1>
       <p>Select two PokeMon, and we'll tell you where they intersect!</p>
     </header>
+    <div id="map"></div>
     <main>
-      <div id="pokemon-container"></div>
+      <div class="all-list-container">
+        <div class="list-scroller" id="pokemon-container-lat">
+          <h2>Latitude</h2>
+          <ul class="poke-list" id="poke-lat"></ul>
+        </div>
+        <div class="list-scroller" id="pokemon-container-long">
+          <h2>Longitude</h2>
+          <ul class="poke-list" id="poke-long"></ul>
+        </div>
+      </div>
       <div id="map-container"></div>
     </main>
+    <script src="assets/script.js"></script>
+    <script src="./assets/googleapi.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArm45pmZWHvKT67x-0Yn3LKHifT5LyZPg&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
   </body>
 </html>

@@ -1,0 +1,49 @@
+ul {
+  list-style: none;
+}
+
+.all-list-container {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  background-color: lightgray;
+}
+
+.list-scroller {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: white;
+  width: 200px;
+  height: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+h1{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  width: 288px;
+  padding: 14px;
+  margin: 20px;
+  color:darkblue;
+  background-color:rgb(96, 208, 176);
+}
+
+h2{
+display: flex;
+justify-content: center;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+p{
+margin-left: 18px;
+font-size: larger;
+}
+
+#pokemon-container-lat{
+background-color: darkcyan;
+}
