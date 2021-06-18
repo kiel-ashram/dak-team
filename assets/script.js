@@ -1,5 +1,6 @@
 var pokeLat = document.getElementById("poke-lat");
 var pokeLong = document.getElementById("poke-long");
+var newLocale = { lat: null, lng: null };
 
 async function pokeHandler(num) {
   // for 1-number passed
@@ -29,32 +30,67 @@ var createListElement = function (pokeData) {
   //create pokemon label
   let pokeTitle = document.createElement("h3");
   let id = pokeData.id;
+  let attack = pokeData.stats[1].base_stat;
+  let defense = pokeData.stats[2].base_stat;
   //format ID to show 3 places always
   id = ("000" + id).slice(-3);
   pokeTitle.textContent = id + ": " + pokeData.name;
   pokeDiv.appendChild(pokeImg);
   pokeDiv.appendChild(pokeTitle);
   pokeLi.appendChild(pokeDiv);
-  pokeDiv.dexId = id;
-  pokeImg.dexId = id;
+
   pokeLi.dexId = id;
 
+  pokeLi.attack = attack;
+  pokeLi.defense = defense;
   return pokeLi;
 };
 
 // call for all 845 pokemon
 pokeHandler(845);
 
+let map;
+
+function initMap() {
+  var location = { lat: 0, lng: 0 };
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: location,
+    zoom: 8,
+  });
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+  console.log(map);
+}
+
 // create onClick which passes lat and long data
 pokeLat.addEventListener("click", function (event) {
-  console.log(event.target.dexId);
+  var id = event.target.closest("li").dexId;
+  console.log(id);
+  id = parseFloat(id);
+  var attack = event.target.closest("li").attack;
+  if (attack > 90) {
+    attack = attack * 0.1;
+  }
+  if (id % 2) {
+    console.log(id % 2);
+    attack = -1 * attack;
+  }
+  console.log(attack);
+  newLocale.lat = attack;
 });
 
 pokeLong.addEventListener("click", function (event) {
-  console.log(event.target.dexId);
+  var id = event.target.closest("li").dexId;
+  id = parseFloat(id);
+  var defense = event.target.closest("li").defense;
+  if (defense > 180) {
+    defense = defense * 0.1;
+  }
+  if (id % 2) {
+    defense = defense * -1;
+  }
+  console.log(defense);
+  newLocale.lng = defense;
 });
-
-var latLong = function () {
-  //define what parameters to pass
-  return true; //prevents errors while function not defined
-};
