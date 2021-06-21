@@ -1,6 +1,6 @@
 var pokeLat = document.getElementById("poke-lat");
 var pokeLong = document.getElementById("poke-long");
-var newLocale = { lat: null, lng: null };
+var newLocale = { lat: 0, lng: 0 };
 
 async function pokeHandler(num) {
   // for 1-number passed
@@ -51,17 +51,20 @@ pokeHandler(845);
 
 let map;
 
+// Initialize and add the map
 function initMap() {
-  var location = { lat: 0, lng: 0 };
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: location,
-    zoom: 8,
+  // The location of Uluru
+  const locale = newLocale;
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: locale,
   });
-  var marker = new google.maps.Marker({
-    position: location,
+  // The marker, positioned at Uluru
+  const marker = new google.maps.Marker({
+    position: locale,
     map: map,
   });
-  console.log(map);
 }
 
 // create onClick which passes lat and long data
@@ -77,8 +80,10 @@ pokeLat.addEventListener("click", function (event) {
     console.log(id % 2);
     attack = -1 * attack;
   }
-  console.log(attack);
+  console.log(newLocale);
   newLocale.lat = attack;
+
+  initMap();
 });
 
 pokeLong.addEventListener("click", function (event) {
@@ -91,6 +96,7 @@ pokeLong.addEventListener("click", function (event) {
   if (id % 2) {
     defense = defense * -1;
   }
-  console.log(defense);
+  console.log(newLocale);
   newLocale.lng = defense;
+  initMap();
 });
